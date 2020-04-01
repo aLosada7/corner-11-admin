@@ -1,0 +1,43 @@
+.TeamHeader {
+    width: 80%;
+    height: 8.50rem;
+    text-align: center;
+    margin: 1% auto;
+    color: #000 !important;
+    box-shadow: 0 2px 3px #ccc;
+    border: 1px solid #eee;
+    box-sizing: border-box;
+    background: linear-gradient(#bc581e, #e27b36);
+    border-radius: 15% 15% 0% 0%;
+    box-shadow: inset -15px 0 #c15711;
+}
+
+.TeamContent {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding: 3rem;
+}
+
+.UserTeams{
+    margin: 0 15%;
+    padding-bottom: 1%;
+}
+
+.TeamRoster {
+    grid-column: 1 / 5;
+}
+
+.Standings {
+    grid-column: 6 / 9;
+}
+
+.NextGames {
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+}
+
+.TeamInfo {
+    grid-column: 10 / 12;
+    text-align: right;
+}
