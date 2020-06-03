@@ -42,10 +42,11 @@ export const generatePlayers = () => {
     for (var index = 0; index < 50; index++) {
         const player = {
             name: generateName(),
-            age: getRandomInt(18, 40),
+            number: getRandomInt(0,10).toString().concat(getRandomInt(0,10).toString()),
+            age: getRandomInt(18, 25),
             position: getRandomPosition(),
-            average: getRandomInt(65, 99),
-            price: getRandomInt(1000000, 20000000),
+            average: getRandomInt(65, 80),
+            price: getRandomInt(5000000, 10000000),
         }
         generatedPlayers.push(player)
     }
@@ -62,7 +63,7 @@ const getRandomInt = (min, max) => {
 }
 
 const getRandomPosition = () => {
-  switch(getRandomInt(1, 5)){
+  switch(getRandomInt(1, 6)){
       case 1: return "PG";
       case 2: return "SG";
       case 3: return "PF";

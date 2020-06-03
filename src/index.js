@@ -6,14 +6,15 @@ import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga';
 
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import App from './components/App';
 import authReducer from './store/reducers/auth';
 import teamReducer from './store/reducers/team';
 import playerReducer from './store/reducers/players';
 import newTeamReducer from './store/reducers/newTeam';
-import { watchTeam, watchPlayer, watchNewTeam } from './store/sagas';
+import competitionReducer from './store/reducers/competitions';
+import reportReducer from './store/reducers/report';
+import gameReducer from './store/reducers/game';
+import { watchTeam, watchPlayer, watchNewTeam, watchGame } from './store/sagas';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -21,8 +22,11 @@ const rootReducer = combineReducers({
     auth: authReducer,
     teams: teamReducer,
     players: playerReducer,
-    newTeam: newTeamReducer
-})
+    newTeam: newTeamReducer,
+    competitions: competitionReducer,
+    report: reportReducer,
+    game: gameReducer
+});
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -33,6 +37,7 @@ const store = createStore(rootReducer, composeEnhancers(
 sagaMiddleware.run(watchTeam);
 sagaMiddleware.run(watchPlayer);
 sagaMiddleware.run(watchNewTeam);
+sagaMiddleware.run(watchGame);
 
 
 const app = (
@@ -44,4 +49,3 @@ const app = (
 )
 
 ReactDOM.render(app, document.getElementById('root'));
-registerServiceWorker();

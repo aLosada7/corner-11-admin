@@ -4,7 +4,8 @@ import { updateObject } from '../../shared/utility';
 const initialState = {
     players: [],
     selectedPlayers: [],
-    loading: false
+    loading: false,
+    teamCreated: false
 }
 
 const setPlayers = (state, action) => {
@@ -14,21 +15,38 @@ const setPlayers = (state, action) => {
 }
 
 const reducer = (state = initialState, action) => {
-    console.log(action.id);
     switch (action.type) {
+        case actionTypes.CREATE_TEAM: {
+            return {
+                ...state,
+                loading: true
+            }
+        }
+        case actionTypes.CREATE_TEAM_SUCCESS: {
+            return {
+                ...state
+            }
+        }
+        case actionTypes.CREATE_TEAM_FAIL:
+            return updateObject(state, { loading: false });
+        case actionTypes.END_CREATE_TEAM: {
+            return {
+                ...state,
+                loading: false,
+                teamCreated: true
+            }
+        }
         case actionTypes.SET_GENERATED_PLAYERS:
             return setPlayers(state, action);
         case actionTypes.ADD_PLAYER_NEW_TEAM:
             return {
                 ...state,
-                players: state.players.filter((item, index) => index !== parseFloat(action.id)),
-                selectedPlayers: state.selectedPlayers.concat(state.players[action.id])
+                selectedPlayers: state.selectedPlayers.concat(action.player)
             }
         case actionTypes.REMOVE_PLAYER_NEW_TEAM:
             return {
                 ...state,
-                players: state.players.concat(state.selectedPlayers[action.id]),
-                selectedPlayers: state.selectedPlayers.filter((item, index) => index !== parseFloat(action.id))
+                selectedPlayers: state.selectedPlayers.filter((item, index) => index !== parseFloat(action.playerId))
             }
         default:
             return state;

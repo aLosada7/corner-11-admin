@@ -3,26 +3,15 @@ import { put } from 'redux-saga/effects';
 
 import * as actions from '../actions/index';
 
-export function* createTeamSaga(action) {
+export function* fetchTeamInfoSaga(action) {
     try {
-        const response = yield axios.post( '/teams.json', action.teamData);
-        yield put(actions.generateTeamSuccess( response.data.name, action.teamData));
-        for(let teamPlayer in action.players) {
-            let player = {
-                ...action.players[teamPlayer],
-                teamId: response.data.name
-            }
-            try {
-                const response = yield axios.post( '/players.json', player)
-                yield put(actions.generatePlayerSuccess( response.data.name, player ));
-            } catch (error) {
-                yield put(actions.generatePlayerFail( error ));
-            }
-        }
+        const response = yield axios.get(`http://localhost:5000/api/v1/teams/${action.teamId}`);
+        console.log(response.data);
+        yield put(actions.fetchTeamSuccess(response.data.data));
+
     } catch (error) {
-        yield put(actions.generateTeamFailed(error));
+        yield put(actions.loadStandingsFail(error));
     }
-    yield put(actions.endGenerateTeam());
 }
 
 export function* loadStandingsSaga(action) {
@@ -40,5 +29,16 @@ export function* loadStandingsSaga(action) {
 
     } catch (error) {
         yield put(actions.loadStandingsFail(error));
+    }
+}
+
+export function* loadGamesSaga(action) {
+    try {
+        const response = yield axios.get(`http://localhost:5000/api/v1/teams/${action.teamId}/games`);
+        console.log(response.data.data)
+        yield put(actions.loadGamesSuccess(response.data.data));
+
+    } catch (error) {
+        yield put(actions.loadGamesFail(error));
     }
 }

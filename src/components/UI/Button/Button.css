@@ -2,16 +2,12 @@
     background-color: transparent;
     border: none;
     color: white;
-    outline: none;
     cursor: pointer;
-    font: inherit;
-    padding: 10px;
+    line-height: normal;
+    font-size: 1rem;
     margin: 10px;
-    font-weight: bold;
-}
-
-.Button:first-of-type {
-    padding-left: 0;
+    padding: 0.4375rem 1.0625rem;
+    font-weight: 400;
 }
 
 .Button:disabled {
@@ -24,5 +20,11 @@
 }
 
 .Danger {
-    color: #944317;
+    background: var(--main-red);
+    border-radius: 0.1875rem;
+}
+
+.Danger:hover {
+    background: var(--main-red-hover);
+    outline: none;
 }

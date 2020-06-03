@@ -16,16 +16,22 @@ export function* generatePlayer(action) {
 
 export function* fetchPlayers(action) {
     try {
-        const response = yield axios.get('/players.json?orderBy="teamId"&equalTo="' + action.userId + '"');
-        const fetchedTeamPlayers = [];
-        for (let key in response.data) {
-            fetchedTeamPlayers.push({
-                ...response.data[key],
-                id: key
-            });
-        }
-        yield put(actions.fetchPlayersSuccess(fetchedTeamPlayers));
+        const response = yield axios.get(`http://localhost:5000/api/v1/players`);
+        console.log(response);
+        const fetchedPlayers = response.data.data;
+        yield put(actions.fetchPlayersSuccess(fetchedPlayers));
     } catch (error) {
         yield put(actions.fetchPlayersFail( error ));
+    }
+}
+
+export function* fetchTeamPlayers(action) {
+    try {
+        const response = yield axios.get(`http://localhost:5000/api/v1/teams/${action.teamId}/players`);
+        console.log(response);
+        const fetchedTeamPlayers = response.data.data;
+        yield put(actions.fetchTeamPlayersSuccess(fetchedTeamPlayers));
+    } catch (error) {
+        yield put(actions.fetchTeamPlayersFail( error ));
     }
 }

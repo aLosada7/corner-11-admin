@@ -5,15 +5,22 @@ export {
 } from './auth';
 
 export {
-    initTeams,
-    createNewTeam,
-    generateTeamSuccess,
-    generateTeamFailed,
-    endGenerateTeam,
+    fetchTeams,
     loadStandings,
     loadStandingsSuccess,
-    loadStandingsFail
+    loadStandingsFail,
+    fetchTeam,
+    fetchTeamSuccess,
+    fetchTeamFail,
+    fetchTeamPlayersSuccess,
+    fetchTeamPlayersFail,
+    loadGamesSuccess,
+    loadGamesFail
 } from './team';
+
+export {
+    fetchCompetitions
+} from './competitions'
 
 export {
     generatePlayer,
@@ -26,6 +33,24 @@ export {
 
 export {
     initGeneratedPlayers,
+    initGeneratedPlayersSuccess,
     addPlayerToNewTeam,
-    removePlayerToNewTeam
+    removePlayerToNewTeam,
+    endGenerateTeam,
+    createNewTeam,
+    generateTeamSuccess,
+    generateTeamFailed,
 } from './newTeam';
+
+export {
+    fetchReport
+} from './report';
+
+export {
+    fetchGames,
+    fetchGamesSuccess,
+    fetchGame,
+    fetchGameSuccess,
+    createGame,
+    createGameSuccess
+} from './game';

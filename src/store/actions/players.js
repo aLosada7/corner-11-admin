@@ -26,7 +26,7 @@ export const generatePlayerFail = (error) => {
 export const fetchPlayersSuccess = (players) => {
     return {
         type: actionTypes.FETCH_PLAYERS_SUCCESS,
-        teamPlayers: players
+        players
     }
 }
 

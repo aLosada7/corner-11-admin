@@ -1,0 +1,24 @@
+// Toolbar
+
+.toolbar {
+    font-size: 1.4rem;
+    height: 7rem;
+    background-color: #fff;
+    border-bottom: var(--color-grey-light-2);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+// Sidebar
+
+.sidebar {
+    background-color: var(--color-grey-dark-1);
+
+    flex: 0 0 18%; /* don't wanna grow and swrimp, but we want that width */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

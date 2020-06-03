@@ -3,14 +3,27 @@ import { updateObject } from '../../shared/utility';
 
 const initialState = {
     teams: [],
+    teamInfo: {},
     teamPlayers: [],
     standings: [],
-    loading: false
+    games: []
 }
 
 const setTeams = (state, action) => {
     return updateObject(state, {
         teams: action.teams
+    });
+}
+
+const setTeamInfo = (state, action) => {
+    return updateObject(state, {
+        teamInfo: action.teamInfo
+    });
+}
+
+const setTeamPlayers = (state, action) => {
+    return updateObject(state, {
+        teamPlayers: action.teamPlayers
     });
 }
 
@@ -20,36 +33,24 @@ const setStandings = (state, action) => {
     });
 }
 
+const setGames = (state, action) => {
+    return updateObject(state, {
+        games: action.games
+    });
+}
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.SET_TEAMS:
             return setTeams(state, action);
-        case actionTypes.CREATE_TEAM: {
-            return {
-                ...state,
-                loading: true
-            }
-        }
-        case actionTypes.END_CREATE_TEAM: {
-            return {
-                ...state,
-                loading: false
-            }
-        }
-        case actionTypes.CREATE_TEAM_SUCCESS: {
-            const newTeam = updateObject(action.teamData, {
-                id: action.teamId
-            });
-            console.log(newTeam);
-            console.log(state.teams)
-            return updateObject(state, {
-                teams: state.teams.concat(newTeam)
-            })
-        }
-        case actionTypes.CREATE_TEAM_FAIL:
-            return updateObject(state, { loading: false });
+        case actionTypes.FETCH_TEAM_SUCCESS:
+            return setTeamInfo(state, action);
+        case actionTypes.FETCH_TEAM_PLAYERS_SUCCESS:
+            return setTeamPlayers(state, action)
         case actionTypes.LOAD_TEAM_STANDINGS_SUCCESS:
             return setStandings(state, action);
+        case actionTypes.LOAD_TEAM_GAMES_SUCCESS:
+            return setGames(state, action);
         default:
             return state;
      }

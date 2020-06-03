@@ -1,32 +1,36 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../axios-teams';
 
-export const generateTeamSuccess = (id, teamData) => {
+export const fetchTeam = (teamId) => {
     return {
-        type: actionTypes.CREATE_TEAM_SUCCESS,
-        teamId: id,
-        teamData: teamData
+        type: actionTypes.FETCH_TEAM,
+        teamId
     }
 }
 
-export const generateTeamFailed = (error) => {
+export const fetchTeamSuccess = (teamInfo) => {
     return {
-        type: actionTypes.CREATE_TEAM_FAIL,
-        error: error
-    }
-}
-
-export const endGenerateTeam = () => {
-    return {
-        type: actionTypes.END_CREATE_TEAM,
+        type: actionTypes.FETCH_TEAM_SUCCESS,
+        teamInfo
     }
 };
 
-export const createNewTeam = ( teamData, teamPlayers ) => {
+export const fetchTeamFail = () => {
     return {
-        type: actionTypes.CREATE_TEAM,
-        teamData: teamData,
-        players: teamPlayers
+        type: actionTypes.FETCH_TEAM_FAIL
+    }
+};
+
+export const fetchTeamPlayersSuccess = (teamPlayers) => {
+    return {
+        type: actionTypes.FETCH_TEAM_PLAYERS_SUCCESS,
+        teamPlayers
+    }
+};
+
+export const fetchTeamPlayersFail = () => {
+    return {
+        type: actionTypes.FETCH_TEAM_PLAYERS_FAIL
     }
 };
 
@@ -50,6 +54,19 @@ export const loadStandingsFail = () => {
     }
 };
 
+export const loadGamesSuccess = (teamGames) => {
+    return {
+        type: actionTypes.LOAD_TEAM_GAMES_SUCCESS,
+        games: teamGames
+    }
+};
+
+export const loadGamesFail = () => {
+    return {
+        type: actionTypes.LOAD_TEAM_GAMES_FAIL,
+    }
+};
+
 export const setAllTeams = (teams) => {
     return {
         type: actionTypes.SET_TEAMS,
@@ -57,18 +74,12 @@ export const setAllTeams = (teams) => {
     }
 }
 
-export const initTeams = (userId) => {
+export const fetchTeams = () => {
     return dispatch => {
-        axios.get('/teams.json?orderBy="userId"&equalTo="' + userId + '"')
+        axios.get('http://localhost:5000/api/v1/teams')
             .then(response => {
-                console.log(response);
-                const fetchedTeams = [];
-                for (let key in response.data) {
-                    fetchedTeams.push({
-                        ...response.data[key],
-                        id: key
-                    });
-                }
+                const fetchedTeams = response.data.data;
+                console.log(fetchedTeams);
                 dispatch(setAllTeams(fetchedTeams));
             })
             .catch(err => {
