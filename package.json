@@ -2,6 +2,9 @@
   "name": "basket-manager-react",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "12.15.0"
+  },
   "proxy": "http://localhost:5000",
   "dependencies": {
     "@material-ui/core": "^4.9.14",
@@ -55,12 +58,10 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "dev": "react-scripts start",
-    "start": "serve -s build",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
+    "start": "node scripts/start.js",
+    "heroku-postbuild": "npm install && npm run build",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
     "collectCoverageFrom": [
