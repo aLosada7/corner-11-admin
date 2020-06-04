@@ -138,7 +138,7 @@ const Auth = (props) => {
 
     let authRedirect = null;
     if (props.isAuthenticated) {
-        authRedirect = <Redirect to={props.authRedirectPath} />
+        authRedirect = <Redirect to='/dashboard' />
     }
 
     return (

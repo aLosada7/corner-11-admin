@@ -62,6 +62,8 @@ const Competitions = (props) => {
 
 		const rowData = rows.map(row => Object.values(row).filter(option => option !== true && option !== false));
 
+		console.log(rowData);
+
 		const matches = rowData.map(row => row.map(option => option.toLowerCase().includes(event.target.value.toLowerCase())));
 
 		const newRows = [...rows];

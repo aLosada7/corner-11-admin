@@ -9,6 +9,9 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { connect } from 'react-redux';
+
+import * as actions from '../../store/actions';
 import logo from '../../assets/logo.png';
 
 const useStyles = makeStyles((theme) => ({
@@ -40,6 +43,10 @@ const Toolbar = (props) =>  {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down("md"));
 
+    const handleLogOut = () => {
+      props.logout();
+    }
+
     return (
         <div className={classes.root}>
             <CssBaseline />
@@ -57,11 +64,18 @@ const Toolbar = (props) =>  {
                     <Typography variant="h6" className={classes.title}>
                       <Link to="/dashboard" ><img alt="company logo" className={classes.logo} src={logo} /></Link>
                     </Typography>
-                    { matches ? null : <Button color="inherit">Log Out</Button> }
+                    { matches ? null : <Button color="inherit" onClick={handleLogOut}>Log Out</Button> }
                 </MaterialToolbar>
             </AppBar>
         </div>
     )
 }
 
-export default Toolbar;
+
+const mapDispatchToProps = dispatch => {
+  return {
+    logout: () => dispatch(actions.logout())
+  };
+}
+
+export default connect(null, mapDispatchToProps)(Toolbar);

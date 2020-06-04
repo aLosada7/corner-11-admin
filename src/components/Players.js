@@ -52,28 +52,28 @@ const Players = (props) => {
 		{ id: 'name', label: 'Name' },
         { id: 'team', label: 'Team' },
         { id: 'age', label: 'Age' },
-        { id: 'price', label: 'Price' }
+        { id: 'price', label: 'Price' },
 	]);
 	
 	useEffect(() => {
         props.onInitPlayers();
 	}, []);
-    
-    useEffect(() => {
-        console.log(playerSelected)
-	}, [playerSelected]);
 
 	useEffect(() => {
         if (props.players) {
-            const players = props.players.map(player => createData(player.position, player.name, player.team.name, player.average, player.age, player.price, player._id, true));
+			const players = props.players.map(player => createData(player.position, player.name, player.team.name, player.average, player.age.toLocaleString(), player.price, player._id, true));
+			console.log(players)
             setRows(players);
         }
 	}, [props.players]);
 
 	const handleSearch = (event) => {
 		setSearch(event.target.value);
+		console.log("value", event.target.value);
 
 		const rowData = rows.map(row => Object.values(row).filter(option => option !== true && option !== false));
+
+		console.log(rowData);
 
 		const matches = rowData.map(row => row.map(option => option.toLowerCase().includes(event.target.value.toLowerCase())));
 

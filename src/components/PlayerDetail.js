@@ -5,7 +5,9 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import Flag from './UI/Flag';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import MuiDialogActions from '@material-ui/core/DialogActions';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({
 	playerHeader: {
@@ -15,6 +17,13 @@ const useStyles = makeStyles(theme => ({
         textAlign: 'center'
     }
 }));
+
+const DialogActions = withStyles((theme) => ({
+    root: {
+      margin: 0,
+      padding: theme.spacing(1),
+    },
+  }))(MuiDialogActions);
 
 const PlayerDetail = (props) => {
     const classes = useStyles();
@@ -29,6 +38,9 @@ const PlayerDetail = (props) => {
 
         dialog = (
         <Dialog fullWidth maxWidth="md" open={props.dialogOpen} onClose={() => props.setDialogOpen(false)}>
+            <DialogActions>
+                <Button autoFocus onClick={() => props.setDialogOpen(false)} color="primary">X</Button>
+            </DialogActions>
             <Grid item container spacing={3} className={classes.playerHeader}>
                 <Grid item container xs={12} sm={9} spacing={1}>
                     <Grid item>
