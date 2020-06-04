@@ -1,4 +1,4 @@
-import axios from '../../axios-teams';
+import axios from '../../axios-manager';
 import { put } from 'redux-saga/effects';
 
 import * as actions from '../actions/index';
@@ -16,7 +16,7 @@ export function* generatePlayer(action) {
 
 export function* fetchPlayers(action) {
     try {
-        const response = yield axios.get(`http://localhost:5000/api/v1/players`);
+        const response = yield axios.get(`/api/v1/players`);
         console.log(response);
         const fetchedPlayers = response.data.data;
         yield put(actions.fetchPlayersSuccess(fetchedPlayers));
@@ -27,7 +27,7 @@ export function* fetchPlayers(action) {
 
 export function* fetchTeamPlayers(action) {
     try {
-        const response = yield axios.get(`http://localhost:5000/api/v1/teams/${action.teamId}/players`);
+        const response = yield axios.get(`/api/v1/teams/${action.teamId}/players`);
         console.log(response);
         const fetchedTeamPlayers = response.data.data;
         yield put(actions.fetchTeamPlayersSuccess(fetchedTeamPlayers));

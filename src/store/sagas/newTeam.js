@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../axios-manager';
 import { put } from 'redux-saga/effects';
 
 import * as actions from '../actions/index';
@@ -7,7 +7,7 @@ export function* getGeneratedPlayers(action) {
     try {
         console.log(action.token)
         axios.defaults.headers.common = {'Authorization': `Bearer ${action.token}`}
-        const response = yield axios.get(`http://localhost:5000/api/v1/players/newplayers`);
+        const response = yield axios.get(`/api/v1/players/newplayers`);
         console.log(response);
         const fetchedPlayers = response.data.data;
         yield put(actions.initGeneratedPlayersSuccess(fetchedPlayers));
@@ -19,7 +19,7 @@ export function* getGeneratedPlayers(action) {
 export function* createTeamSaga(action) {
     try {
         axios.defaults.headers.common = {'Authorization': `Bearer ${action.token}`}
-        const response = yield axios.post( 'http://localhost:5000/api/v1/teams', action.teamData);
+        const response = yield axios.post( '/api/v1/teams', action.teamData);
         let teamData = response.data;
         yield put(actions.generateTeamSuccess( teamData.data._id, action.teamData));
         /*const competition = {
@@ -47,7 +47,7 @@ export function* createTeamSaga(action) {
                 transferable: false
             }
             try {
-                const response2 = yield axios.post( `http://localhost:5000/api/v1/teams/${teamData.data._id}/players`, player)
+                const response2 = yield axios.post( `/api/v1/teams/${teamData.data._id}/players`, player)
                 //yield put(actions.generatePlayerSuccess( response2.data.name, player ));
             } catch (error) {
                 //yield put(actions.generatePlayerFail( error ));

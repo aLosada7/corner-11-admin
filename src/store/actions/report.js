@@ -1,10 +1,10 @@
 import * as actionTypes from './actionTypes';
-import axios from 'axios';
+import axios from '../../axios-manager';
 
 export const fetchReport = (token) => {
     return dispatch => {
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
-        axios.get('http://localhost:5000/api/v1/report')
+        axios.get('/api/v1/report')
             .then(response => {
                 const fetchReport = response.data.data;
                 dispatch(fetchReportSuccess(fetchReport));

@@ -1,9 +1,9 @@
 import * as actionTypes from './actionTypes';
-import axios from 'axios';
+import axios from '../../axios-manager';
 
 export const fetchCompetitions = () => {
     return dispatch => {
-        axios.get('http://localhost:5000/api/v1/competitions')
+        axios.get('/api/v1/competitions')
             .then(response => {
                 const fetchedCompetitions = response.data.data;
                 dispatch(fetchCompetitionsSuccess(fetchedCompetitions));

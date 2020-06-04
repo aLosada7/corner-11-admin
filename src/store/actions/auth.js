@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../axios-manager';
 
 import * as actionTypes from './actionTypes';
 
@@ -46,7 +46,7 @@ export const auth = (email, password, isSignUp) => {
             password
         }
 
-        let url = 'http://localhost:5000/api/v1/auth/login';
+        let url = '/api/v1/auth/login';
         
         axios.post(url, authData)
             .then(response => {

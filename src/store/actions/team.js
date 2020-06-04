@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes';
-import axios from '../../axios-teams';
+import axios from '../../axios-manager';
 
 export const fetchTeam = (teamId) => {
     return {
@@ -76,7 +76,7 @@ export const setAllTeams = (teams) => {
 
 export const fetchTeams = () => {
     return dispatch => {
-        axios.get('http://localhost:5000/api/v1/teams')
+        axios.get('/api/v1/teams')
             .then(response => {
                 const fetchedTeams = response.data.data;
                 console.log(fetchedTeams);

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../axios-manager';
 import { put } from 'redux-saga/effects';
 
 import * as actions from '../actions/index';
@@ -6,7 +6,7 @@ import * as actions from '../actions/index';
 export function* getGames(action) {
     console.log(action.gameId)
     try {
-        const response = yield axios.get(`http://localhost:5000/api/v1/games`);
+        const response = yield axios.get(`/api/v1/games`);
         const fetchedGames = response.data.data;
         const previousGames = fetchedGames.filter(game => game.homePoints !== 0);
         const upcomingGames = fetchedGames.filter(game => game.homePoints === 0);
@@ -19,7 +19,7 @@ export function* getGames(action) {
 export function* getGame(action) {
     console.log(action.gameId)
     try {
-        const response = yield axios.get(`http://localhost:5000/api/v1/games/${action.gameId}`);
+        const response = yield axios.get(`/api/v1/games/${action.gameId}`);
         console.log(response);
         const fetchedGame = response.data.data;
         const game = {
@@ -39,7 +39,7 @@ export function* createGame(action) {
     console.log(action.local, action.visitor)
     try {
         axios.defaults.headers.common = {'Authorization': `Bearer ${action.token}`}
-        const response = yield axios.post('http://localhost:5000/api/v1/games', { home: action.local, visitor: action.visitor });
+        const response = yield axios.post('/api/v1/games', { home: action.local, visitor: action.visitor });
         console.log(response);
         yield put(actions.createGameSuccess());
     } catch (error) {

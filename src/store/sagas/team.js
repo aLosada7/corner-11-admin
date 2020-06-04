@@ -1,11 +1,11 @@
-import axios from '../../axios-teams';
+import axios from '../../axios-manager';
 import { put } from 'redux-saga/effects';
 
 import * as actions from '../actions/index';
 
 export function* fetchTeamInfoSaga(action) {
     try {
-        const response = yield axios.get(`http://localhost:5000/api/v1/teams/${action.teamId}`);
+        const response = yield axios.get(`/api/v1/teams/${action.teamId}`);
         console.log(response.data);
         yield put(actions.fetchTeamSuccess(response.data.data));
 
@@ -34,7 +34,7 @@ export function* loadStandingsSaga(action) {
 
 export function* loadGamesSaga(action) {
     try {
-        const response = yield axios.get(`http://localhost:5000/api/v1/teams/${action.teamId}/games`);
+        const response = yield axios.get(`/api/v1/teams/${action.teamId}/games`);
         console.log(response.data.data)
         yield put(actions.loadGamesSuccess(response.data.data));
 
