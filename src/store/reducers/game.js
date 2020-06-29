@@ -7,7 +7,9 @@ const initialState = {
     game: {},
     scoreByQuarter: [],
     gameActions: [],
-    gameStandings: {}
+    gameStandings: {},
+    isLoading: false,
+    loadingMsg: ''
 }
 
 const setGames = (state, action) => {
@@ -22,7 +24,8 @@ const setGame = (state, action) => {
         game: action.game.game,
         scoreByQuarter: action.game.scoreByQuarter,
         gameActions: action.game.gameActions,
-        gameStandings: action.game.gameStandings
+        gameStandings: action.game.gameStandings,
+        isLoading: false
     });
 }
 
@@ -31,6 +34,13 @@ const reducer = (state = initialState, action) => {
         case actionTypes.FETCH_GAMES_SUCCESS:
             return setGames(state, action);
         case actionTypes.FETCH_GAME_SUCCESS:
+            return setGame(state, action);
+        case actionTypes.SIMULATE_GAME:
+            return updateObject(state, {
+                isLoading: true,
+                loadingMsg: 'Simulating game...'
+            });
+        case actionTypes.SIMULATE_GAME_SUCCESS:
             return setGame(state, action);
         default:
             return state;

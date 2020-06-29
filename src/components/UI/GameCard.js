@@ -31,8 +31,6 @@ const useStyles = makeStyles((theme) => ({
 const Games = (props) => {
     const classes = useStyles();
 
-    console.log(props.game)
-
     const homePoints = props.game.localScore;
     const visitorPoints = props.game.visitorScore;
 

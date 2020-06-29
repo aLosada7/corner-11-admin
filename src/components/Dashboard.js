@@ -84,7 +84,7 @@ const Dashboard = (props) => {
     return(
         <Grid container direction="column">
                 <Grid item container justify="center" alignItems="center" direction="row" spacing={9} style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                    <Grid item xs={12} sm={4}>
+                    <Grid item xs={12} sm={6}>
                         <Card className={classes.miniCard}>
                             <CardContent>
                                 <Grid container>
@@ -99,7 +99,7 @@ const Dashboard = (props) => {
                             </CardContent>
                         </Card>
                     </Grid>
-                    <Grid item xs={12} sm={4}>
+                    <Grid item xs={12} sm={6}>
                         <Card className={classes.miniCard}>
                             <CardContent>
                                 <Grid container>
@@ -109,21 +109,6 @@ const Dashboard = (props) => {
                                     <Grid item xs={8} style={{ backgroundColor: '#7266ba', color: '#fff' }}>
                                         <Typography variant="h2" style={{ color: '#fff' }}>{props.totals.players}</Typography>
                                         <Typography variant="subtitle1">PLAYERS</Typography>
-                                    </Grid>
-                                </Grid>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                    <Grid item xs={12} sm={4}>
-                        <Card className={classes.miniCard}>
-                            <CardContent>
-                                <Grid container>
-                                    <Grid item xs={4} style={{ backgroundColor: '#2b957a', color: '#fff' }}>
-                                        <StarsIcon className={classes.miniCardIcon} />
-                                    </Grid>
-                                    <Grid item xs={8} style={{ backgroundColor: '#37bc9b', color: '#fff' }}>
-                                        <Typography variant="h2" style={{ color: '#fff' }}>{props.totals.competitions}</Typography>
-                                        <Typography variant="subtitle1">COMPETITIONS</Typography>
                                     </Grid>
                                 </Grid>
                             </CardContent>
@@ -185,7 +170,6 @@ const mapStateToProps = state => {
         expensivePlayers: state.report.expensivePlayers,
         topPlayers: state.report.topPlayers,
         teams: state.teams.teams,
-        competitions: state.competitions.competitions,
         teamPlayers: state.players.teamPlayers,
         teamStandings: state.teams.standings,
         userId: state.auth.userId

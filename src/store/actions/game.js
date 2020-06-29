@@ -42,3 +42,25 @@ export const createGameSuccess = () => {
         type: actionTypes.CREATE_GAME_SUCCESS
     }
 }
+
+export const simulateGame = (gameId, token) => {
+    return {
+        type: actionTypes.SIMULATE_GAME,
+        gameId,
+        token
+    }
+}
+
+export const simulateGameSuccess = (game) => {
+    return {
+        type: actionTypes.SIMULATE_GAME_SUCCESS,
+        game
+    }
+}
+
+export const simulateGameFail = (gameId) => {
+    return {
+        type: actionTypes.SIMULATE_GAME_FAIL,
+        gameId
+    }
+}

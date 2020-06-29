@@ -13,7 +13,6 @@ import NewTeam from './NewTeam';
 import Team from './Team';
 import Layout from '../hoc/Layout/Layout';
 import Teams from './Teams';
-import Competitions from './Competitions';
 import Players from './Players';
 import Game from './Game';
 import Games from './Games';
@@ -40,7 +39,6 @@ const App = (props) => {
 					<Route path="/dashboard" component={Dashboard} />
 					<Route path="/teams" component={Teams} />
 					<Route path="/players" component={Players} />
-					<Route path="/competitions" component={Competitions} />
 					<Route path="/game/:id" component={Game} />
 					<Route path="/games" component={Games} />
 			</Switch>

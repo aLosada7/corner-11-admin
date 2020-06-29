@@ -21,7 +21,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const handleCell = (type, cell) => {
-  console.log(cell)
     switch(type) {
       case "action":
         return <GameAction action={cell} />;

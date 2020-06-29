@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
-  content: {
+  authContent: {
     flexGrow: 1,
     padding: theme.spacing(3),
     marginTop: '64px',
@@ -24,6 +24,12 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       marginLeft: '0em',
     },
+  },
+  noAuthContent: {
+    minHeight: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 }));
 
@@ -38,8 +44,7 @@ const Layout = (props) => {
       { name: "Dashboard", link: "/dashboard", activeIndex: 0 },
       { name: "Teams", link: "/teams", activeIndex: 1},
       { name: "Players", link: "/players", activeIndex: 2 },
-      { name: "Competitions", link: "/competitions", activeIndex: 3 },
-      { name: "Games", link: "/games", activeIndex: 4 }
+      { name: "Games", link: "/games", activeIndex: 3 }
     ]
     
     const handleDrawerToggle = () => {
@@ -60,7 +65,7 @@ const Layout = (props) => {
                 value={value}
                 setValue={setValue}
                 /> : null }
-            <main className={props.isAuthenticated ? classes.content : null}>
+            <main className={props.isAuthenticated ? classes.authContent : classes.noAuthContent}>
               {props.children}
             </main>
         </ReactAux>

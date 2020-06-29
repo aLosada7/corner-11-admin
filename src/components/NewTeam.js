@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import Icon from 'react-icons-kit';
-import {userMinus} from 'react-icons-kit/icomoon/userMinus';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import FormControl from '@material-ui/core/FormControl';
@@ -17,8 +15,6 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import * as actions from '../store/actions';
 import { generatePlayers } from '../shared/utility';
 import EnhancedTable from './UI/EnhancedTable';
-
-const budgetAvailable = 100000000;
 
 const useStyles = makeStyles(theme => ({
     newTeam: {
@@ -79,8 +75,6 @@ const NewTeam = (props) => {
         },
         notification: null,
         teamPlayers: [],
-        budgetAvailable: 100000000,
-        budget: 100000000,
         numberOfPlayers: 0
     }
 
@@ -122,8 +116,6 @@ const NewTeam = (props) => {
 
     const submitTeamHandler = (event) => {
         event.preventDefault();
-
-        console.log(props);
 
         if (numberPlayers >= 7 && budget > 0) {
             const team = {

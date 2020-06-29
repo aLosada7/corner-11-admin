@@ -49,6 +49,12 @@ const useStyles = makeStyles((theme) =>({
             marginBottom: '2em'
         }
     },
+    contact: {
+        marginTop: '2em',
+        [theme.breakpoints.down("md")]: {
+            marginTop: '0.4em'
+        }
+    }
   }));
 
 const Auth = (props) => {
@@ -153,6 +159,11 @@ const Auth = (props) => {
                     <Grid item style={{ marginTop: '2em', marginBottom: '2em' }}>
                         <Typography variant="subtitle2" align="center" style={{ textTransform: 'uppercase' }}>Sign In Now To Continue.</Typography>
                     </Grid>
+
+                    <Grid item>
+                        {errorMessage}
+                    </Grid>
+
                     <Grid item>
                         <TextField 
                             variant="outlined"
@@ -169,6 +180,7 @@ const Auth = (props) => {
                             }} 
                         />
                     </Grid>
+
                     <Grid item>
                         <TextField 
                             variant="outlined"
@@ -192,9 +204,11 @@ const Auth = (props) => {
                         </Button>
                     </Grid>
                 
-                    <Grid item>
-                        {errorMessage}
+                    <Grid item className={classes.contact}>
+                        <p>If you have not an account, please contact the administrator.</p>
                     </Grid>
+
+                    
                     <br />
                     {checkingForm}
                 </Grid>

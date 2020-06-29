@@ -4,7 +4,7 @@ import * as actionTypes from '../actions/actionTypes';
 import { getGeneratedPlayers, createTeamSaga } from './newTeam';
 import { loadStandingsSaga, fetchTeamInfoSaga, loadGamesSaga } from './team'; 
 import { fetchPlayers, fetchTeamPlayers } from './player';
-import { getGames, getGame, createGame } from './game';
+import { getGames, getGame, createGame, simulateGame } from './game';
 
 //yield means execute this and wait to finish
 export function* watchTeam() {
@@ -27,4 +27,5 @@ export function* watchGame() {
     yield takeEvery(actionTypes.FETCH_GAMES, getGames);
     yield takeEvery(actionTypes.FETCH_GAME, getGame);
     yield takeEvery(actionTypes.CREATE_GAME, createGame);
+    yield takeEvery(actionTypes.SIMULATE_GAME, simulateGame);
 }

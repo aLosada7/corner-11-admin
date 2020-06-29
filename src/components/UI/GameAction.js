@@ -7,7 +7,6 @@ function importAll(r) {
 const images = importAll(require.context('../../assets/actions', false, /\.(png|jpe?g|svg)$/));
 
 const Flag = (props) => {
-    console.log(images, props.action)
     let action = props.action ? props.action: 'noflag';
     let image = images.filter(image => image.indexOf(action) > 0)[0];
     return (

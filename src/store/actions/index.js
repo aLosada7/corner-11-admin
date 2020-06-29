@@ -19,10 +19,6 @@ export {
 } from './team';
 
 export {
-    fetchCompetitions
-} from './competitions'
-
-export {
     generatePlayer,
     generatePlayerSuccess,
     generatePlayerFail,
@@ -52,5 +48,8 @@ export {
     fetchGame,
     fetchGameSuccess,
     createGame,
-    createGameSuccess
+    createGameSuccess,
+    simulateGame,
+    simulateGameSuccess,
+    simulateGameFail
 } from './game';

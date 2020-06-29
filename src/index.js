@@ -11,7 +11,6 @@ import authReducer from './store/reducers/auth';
 import teamReducer from './store/reducers/team';
 import playerReducer from './store/reducers/players';
 import newTeamReducer from './store/reducers/newTeam';
-import competitionReducer from './store/reducers/competitions';
 import reportReducer from './store/reducers/report';
 import gameReducer from './store/reducers/game';
 import { watchTeam, watchPlayer, watchNewTeam, watchGame } from './store/sagas';
@@ -23,7 +22,6 @@ const rootReducer = combineReducers({
     teams: teamReducer,
     players: playerReducer,
     newTeam: newTeamReducer,
-    competitions: competitionReducer,
     report: reportReducer,
     game: gameReducer
 });

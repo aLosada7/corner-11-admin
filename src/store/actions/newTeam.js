@@ -29,6 +29,12 @@ export const removePlayerToNewTeam = (playerId) => {
     }
 }
 
+/**
+ * Start creating new team
+ * @param {string} token 
+ * @param {*} teamData 
+ * @param {*} selectedPlayers 
+ */
 export const createNewTeam = ( token, teamData, selectedPlayers ) => {
     console.log(selectedPlayers)
     return {
