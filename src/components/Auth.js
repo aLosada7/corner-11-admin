@@ -16,9 +16,22 @@ import Typography from '@material-ui/core/Typography';
 import Spinner from './UI/Spinner/Spinner';
 import * as actions from '../store/actions';
 import logo from '../assets/logo.png';
+import authBackground from '../assets/auth_background.jpg'
 
 const useStyles = makeStyles((theme) =>({
     root: {
+        minHeight: '100vh',
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        backgroundImage: `url(${authBackground})`,
+        backgroundRepeat: 'no-repeat',
+        [theme.breakpoints.up("md")]: {
+            backgroundAttachment: 'fixed',
+            backgroundSize: '100% 100%'
+        }
+    },
+    card: {
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
@@ -148,72 +161,75 @@ const Auth = (props) => {
     }
 
     return (
-        <Card className={classes.root}>
-            <CardHeader
-                    className={classes.loginHeader}
-                    title={<img alt="company logo" className={classes.logo} src={logo} />}>
-            </CardHeader>
-            <CardContent className={classes.content}>
-                {authRedirect}
-                <Grid container direction="column" align="center">
-                    <Grid item style={{ marginTop: '2em', marginBottom: '2em' }}>
-                        <Typography variant="subtitle2" align="center" style={{ textTransform: 'uppercase' }}>Sign In Now To Continue.</Typography>
-                    </Grid>
+        <div className={classes.root}>
+            <Card className={classes.card}>
+                <CardHeader
+                        className={classes.loginHeader}
+                        title={<img alt="company logo" className={classes.logo} src={logo} />}>
+                </CardHeader>
+                <CardContent className={classes.content}>
+                    {authRedirect}
+                    <Grid container direction="column" align="center">
+                        <Grid item style={{ marginTop: '2em', marginBottom: '2em' }}>
+                            <Typography variant="subtitle2" align="center" style={{ textTransform: 'uppercase' }}>Sign In Now To Continue.</Typography>
+                        </Grid>
 
-                    <Grid item>
-                        {errorMessage}
-                    </Grid>
+                        <Grid item>
+                            {errorMessage}
+                        </Grid>
 
-                    <Grid item>
-                        <TextField 
-                            variant="outlined"
-                            placeholder="Enter email"
-                            style={{ width: '100%' }}
-                            size="small"
-                            value={formState.email}
-                            onChange={(event) => updateInputValue('email', event.target.value)}
-                            InputProps={{ 
-                                endAdornment: 
-                                <InputAdornment position="end">
-                                    <AlternateEmailIcon color="white" style={{ fontSize: 30 }} />
-                                </InputAdornment>
-                            }} 
-                        />
-                    </Grid>
+                        <Grid item>
+                            <TextField 
+                                variant="outlined"
+                                placeholder="Enter email"
+                                style={{ width: '100%' }}
+                                size="small"
+                                value={formState.email}
+                                onChange={(event) => updateInputValue('email', event.target.value)}
+                                InputProps={{ 
+                                    endAdornment: 
+                                    <InputAdornment position="end">
+                                        <AlternateEmailIcon color="white" style={{ fontSize: 30 }} />
+                                    </InputAdornment>
+                                }} 
+                            />
+                        </Grid>
 
-                    <Grid item>
-                        <TextField 
-                            variant="outlined"
-                            placeholder="Password"
-                            type="password"
-                            style={{ width: '100%' }}
-                            size="small"
-                            value={formState.password}
-                            onChange={(event) => updateInputValue('password', event.target.value)}
-                            InputProps={{ 
-                                endAdornment: 
-                                <InputAdornment position="end">
-                                    <LockIcon color="white" style={{ fontSize: 30 }} />
-                                </InputAdornment>
-                            }} 
-                        />
-                    </Grid>
-                    <Grid item>
-                        <Button variant="outlined" className={classes.loginButton} onClick={submitHandler}>
-                            <span>LOGIN</span>
-                        </Button>
-                    </Grid>
-                
-                    <Grid item className={classes.contact}>
-                        <p>If you have not an account, please contact the administrator.</p>
-                    </Grid>
-
+                        <Grid item>
+                            <TextField 
+                                variant="outlined"
+                                placeholder="Password"
+                                type="password"
+                                style={{ width: '100%' }}
+                                size="small"
+                                value={formState.password}
+                                onChange={(event) => updateInputValue('password', event.target.value)}
+                                InputProps={{ 
+                                    endAdornment: 
+                                    <InputAdornment position="end">
+                                        <LockIcon color="white" style={{ fontSize: 30 }} />
+                                    </InputAdornment>
+                                }} 
+                            />
+                        </Grid>
+                        <Grid item>
+                            <Button variant="outlined" className={classes.loginButton} onClick={submitHandler}>
+                                <span>LOGIN</span>
+                            </Button>
+                        </Grid>
                     
-                    <br />
-                    {checkingForm}
-                </Grid>
-            </CardContent>
-        </Card>
+                        <Grid item className={classes.contact}>
+                            <p>If you have not an account, please contact the administrator.</p>
+                        </Grid>
+
+                        
+                        <br />
+                        {checkingForm}
+                    </Grid>
+                </CardContent>
+            </Card>
+        </div>
+        
     );
 }
 

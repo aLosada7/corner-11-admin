@@ -14,6 +14,7 @@ import newTeamReducer from './store/reducers/newTeam';
 import reportReducer from './store/reducers/report';
 import gameReducer from './store/reducers/game';
 import { watchTeam, watchPlayer, watchNewTeam, watchGame } from './store/sagas';
+import { CssBaseline } from '@material-ui/core';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -39,7 +40,8 @@ sagaMiddleware.run(watchGame);
 
 
 const app = (
-    <Provider store={store}>   
+    <Provider store={store}>  
+        <CssBaseline />
         <BrowserRouter>
             <App />
         </BrowserRouter>

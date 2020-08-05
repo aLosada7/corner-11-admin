@@ -80,20 +80,20 @@ const Teams = (props) => {
     return (
       <Grid container direction="column">
 		  	<Grid item container direction={matchesSM ? 'column-reverse' : 'row'} alignItems="center" spacing={3}>
-					<Grid item className={classes.headerContainer} xs={9}>
-						<TextField 
-							placeholder="Search for a team"
-							value={search}
-							onChange={handleSearch}
-							style={{ width: '100%' }}
-						/>
-					</Grid>
-					<Grid item className={classes.headerContainer} xs={3}>
-						<Button component={Link} to="/new-team" variant="outlined" className={classes.addTeamButton}>
-                            <span style={{ marginRight: 10 }}>ADD TEAM +</span>
-                        </Button>
-					</Grid>
-				</Grid>
+                <Grid item className={classes.headerContainer} xs={9}>
+                    <TextField 
+                        placeholder="Search for a team"
+                        value={search}
+                        onChange={handleSearch}
+                        style={{ width: '100%' }}
+                    />
+                </Grid>
+                <Grid item className={classes.headerContainer} xs={3}>
+                    <Button component={Link} to="/new-team" variant="outlined" className={classes.addTeamButton}>
+                        <span style={{ marginRight: 10 }}>ADD TEAM +</span>
+                    </Button>
+                </Grid>
+			</Grid>
 		  	<Grid item style={{ maxWidth: '100%', marginBottom: matchesMD ? '40em' : '35em' }}>
 				<EnhancedTable 
 					columns={columns}
