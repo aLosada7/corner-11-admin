@@ -1,23 +1,23 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const arcBlue = '#3a3f51';
-const arcOrange = '#FFBA60';
-const arcGrey = "#656565";
-const arcLightGrey = "#DCDCDC"
+const arcPrimary = '#290001';
+const arcSecondary = '#87431d';
+const arcGold = "#c87941";
+const arcWarm = "#dbcbbd"
 
 const theme = createMuiTheme({
   palette: {
     common:  {
-        blue: `${arcBlue}`,
-        orange: `${arcOrange}`,
-        grey: arcGrey,
-        lightGrey: arcLightGrey
+        brown: `${arcPrimary}`,
+        orange: `${arcSecondary}`,
+        gold: arcGold,
+        warm: arcWarm
     },
     primary: {
-        main: `${arcBlue}`,
+        main: `${arcPrimary}`,
     },
     secondary: {
-        main: `${arcOrange}`,
+        main: `${arcWarm}`,
     }
   },
   typography: {
@@ -31,19 +31,19 @@ const theme = createMuiTheme({
       fontFamily: 'Raleway',
       fontWeight: 700,
       fontSize: '2.5rem',
-      color: `${arcBlue}`,
+      color: `${arcPrimary}`,
       lineHeight: '1.5'
     },
     h3: {
       fontFamily: 'Raleway',
       fontSize: '2.5rem',
-      color: `${arcBlue}`,
+      color: `${arcPrimary}`,
       fontWeight: 700
     },
     h4: {
       fontFamily: 'Raleway',
       fontSize: '1.75rem',
-      color: `${arcBlue}`,
+      color: `${arcPrimary}`,
       fontWeight: 700
     },
     h6: {
@@ -59,19 +59,18 @@ const theme = createMuiTheme({
     },
     subtitle2: {
       fontSize: '1rem',
-      fontWeight: 300,
-      color: `${arcGrey}`
+      fontWeight: 300
     },
     button1: {
-      borderColor: `${arcBlue}`,
-      color: `${arcBlue}`,
+      borderColor: `${arcPrimary}`,
+      color: `${arcPrimary}`,
       borderWidth: 2,
       textTransform: 'none',
       fontFamily: 'Roboto',
       fontWeight: 'bold',
     },
     drawer: {
-      width: '15em'
+      width: '18.5em'
     },
     formItem: {
       marginBottom: '1rem'

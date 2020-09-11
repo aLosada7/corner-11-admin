@@ -16,7 +16,7 @@ import Typography from '@material-ui/core/Typography';
 import Spinner from './UI/Spinner/Spinner';
 import * as actions from '../store/actions';
 import logo from '../assets/logo.png';
-import authBackground from '../assets/auth_background.jpg'
+import authBackground from '../assets/background.jpg';
 
 const useStyles = makeStyles((theme) =>({
     root: {
@@ -35,20 +35,28 @@ const useStyles = makeStyles((theme) =>({
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
-        width: '320px',
+        width: '600px',
         margin: '0 auto',
-        marginTop: 1.5
+        marginTop: 1.5,
+        [theme.breakpoints.down("md")]: {
+            width: '320px'
+        }
     },
     logo: {
         height: '4em',
         margin: '-2.5rem'
 	},
     content: {
-        width: '90%',
-        margin: 'auto'
+        width: '60%',
+        margin: 'auto',
+        padding: '4em 0 !important',
+        [theme.breakpoints.down("md")]: {
+            width: '90%',
+            padding: '0em !important'
+        }
     },
     loginHeader: {
-        backgroundColor: '#3a3f51',
+        backgroundColor: theme.palette.primary.main,
         color: '#fff'
     },
     loginButton: {
@@ -56,7 +64,7 @@ const useStyles = makeStyles((theme) =>({
         fontSize: '0.7rem',
         width: '100%',
         height: 35,
-        borderColor: theme.palette.primary,
+        borderColor: theme.palette.primary.main,
         color: theme.palette.primary,
         [theme.breakpoints.down("sm")]: {
             marginBottom: '2em'
@@ -151,7 +159,7 @@ const Auth = (props) => {
 
     if (props.error) {
         errorMessage = (
-            <p style={{color: '#656565'}}>{props.error}</p>
+            <p style={{color: '#7d0633'}}>{props.error}</p>
         );
     }
 
@@ -170,7 +178,7 @@ const Auth = (props) => {
                 <CardContent className={classes.content}>
                     {authRedirect}
                     <Grid container direction="column" align="center">
-                        <Grid item style={{ marginTop: '2em', marginBottom: '2em' }}>
+                        <Grid item style={{ marginTop: '2em', marginBottom: errorMessage ? '0em' : '2em' }}>
                             <Typography variant="subtitle2" align="center" style={{ textTransform: 'uppercase' }}>Sign In Now To Continue.</Typography>
                         </Grid>
 

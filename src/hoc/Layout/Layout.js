@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux'; 
 import { makeStyles } from '@material-ui/core/styles';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 import ReactAux from '../ReactAux/ReactAux';
 import Toolbar from '../../components/UI/Toolbar';
@@ -20,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
     marginTop: '64px',
-    marginLeft: '15em',
+    marginLeft: '18.5em',
     [theme.breakpoints.down("md")]: {
       marginLeft: '0em',
     },
@@ -41,15 +42,15 @@ const Layout = (props) => {
     const [openDrawer, setOpenDrawer] = useState(false);
 
     const routes = [
-      { name: "Dashboard", link: "/dashboard", activeIndex: 0 },
-      { name: "Teams", link: "/teams", activeIndex: 1},
-      { name: "Players", link: "/players", activeIndex: 2 },
-      { name: "Games", link: "/games", activeIndex: 3 }
+      { name: "Dashboard", link: "/", icon: 'dashboard', activeIndex: 0 },
+      { name: "Teams", link: "/teams", icon: 'group', activeIndex: 1},
+      { name: "Players", link: "/players", icon: 'emoji_people', activeIndex: 2 },
+      { name: "Games", link: "/games", icon: 'pie_chart', activeIndex: 3 }
     ]
     
     const handleDrawerToggle = () => {
         setOpenDrawer(!openDrawer);
-      };
+    };
 
     return(
         <ReactAux>
@@ -58,7 +59,8 @@ const Layout = (props) => {
                     isAuth={props.isAuthenticated}
                     openDrawer={handleDrawerToggle}
                     /> : null }
-            {props.isAuthenticated ? <Sidebar
+            {props.isAuthenticated ? 
+            <Sidebar
                 routes={routes}
                 openDrawer={openDrawer}
                 setOpenDrawer={setOpenDrawer}

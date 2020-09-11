@@ -32,10 +32,16 @@ const useStyles = makeStyles((theme) =>({
     miniCard: {
         minWidth: '100%'
     },
+    miniCardSide: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '10em',
+        flexDirection: 'column'
+    },
     miniCardIcon: {
         width: 50,
         height: 50,
-        marginTop: '20%'
     },
     wrapIcon: {
         verticalAlign: 'middle',
@@ -88,10 +94,10 @@ const Dashboard = (props) => {
                         <Card className={classes.miniCard}>
                             <CardContent>
                                 <Grid container>
-                                    <Grid item xs={4} style={{ backgroundColor: '#2f80e7', color: '#fff' }}>
+                                    <Grid item xs={4} className={classes.miniCardSide} style={{ backgroundColor: '#2f80e7', color: '#fff' }}>
                                         <PublicIcon className={classes.miniCardIcon} />
                                     </Grid>
-                                    <Grid item xs={8} style={{ backgroundColor: '#5d9cec', color: '#fff' }}>
+                                    <Grid item xs={8} className={classes.miniCardSide} style={{ backgroundColor: '#5d9cec', color: '#fff' }}>
                                         <Typography variant="h2" style={{ color: '#fff' }}>{props.totals.teams}</Typography>
                                         <Typography variant="subtitle1">TEAMS</Typography>
                                     </Grid>
@@ -103,10 +109,10 @@ const Dashboard = (props) => {
                         <Card className={classes.miniCard}>
                             <CardContent>
                                 <Grid container>
-                                    <Grid item xs={4} style={{ backgroundColor: '#564aa3', color: '#fff' }}>
+                                    <Grid item xs={4} className={classes.miniCardSide} style={{ backgroundColor: '#564aa3', color: '#fff' }}>
                                         <PersonIcon className={classes.miniCardIcon} />
                                     </Grid>
-                                    <Grid item xs={8} style={{ backgroundColor: '#7266ba', color: '#fff' }}>
+                                    <Grid item xs={8} className={classes.miniCardSide} style={{ backgroundColor: '#7266ba', color: '#fff' }}>
                                         <Typography variant="h2" style={{ color: '#fff' }}>{props.totals.players}</Typography>
                                         <Typography variant="subtitle1">PLAYERS</Typography>
                                     </Grid>
@@ -115,7 +121,7 @@ const Dashboard = (props) => {
                         </Card>
                     </Grid>
                 </Grid>
-                <Grid item container spacing={3}>
+                {/*<Grid item container spacing={3}>
                     <Grid item xs={12} sm={6}>
                         <Card className={classes.card}>
                             <CardContent>
@@ -157,8 +163,8 @@ const Dashboard = (props) => {
                                 </Grid>
                             </CardContent>
                         </Card>
-                    </Grid>
-                </Grid>
+                 </Grid>
+            </Grid>**/}
         </Grid>
     );
 }

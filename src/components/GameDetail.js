@@ -30,9 +30,9 @@ const standingsColumns = [
 ]
 
 const actionsColumns = [
-    { name: 'Time', align: 'center', color: '#353343'},
-    { name: 'Action', align: 'left', color: '#353343', type: 'action'},
-    { name: 'Message', align: 'center', color: '#353343'},
+    { name: 'Time', align: 'center', color: '#353343' },
+    { name: 'Action', align: 'left', color: '#353343'  },
+    { name: 'Message', align: 'center', color: '#353343' },
 ]
 
 function TabPanel(props) {

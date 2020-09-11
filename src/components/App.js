@@ -20,6 +20,8 @@ import NewGame from './NewGame';
 
 const App = (props) => {
 	useEffect(() => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('expirationDate');
 		props.onTryAutoSignup();
 		props.fetchTeams();
 	}, []);
@@ -33,14 +35,14 @@ const App = (props) => {
 	if (props.isAuthenticated) {
 		routes = (
 			<Switch>
-					<Route path="/new-team" component={NewTeam} />
-					<Route path="/new-game" component={NewGame} />
-					<Route path="/team/:id" component={Team} />
-					<Route path="/dashboard" component={Dashboard} />
-					<Route path="/teams" component={Teams} />
-					<Route path="/players" component={Players} />
-					<Route path="/game/:id" component={Game} />
-					<Route path="/games" component={Games} />
+                <Route path="/" component={Dashboard} exact />
+                <Route path="/new-team" component={NewTeam} />
+                <Route path="/new-game" component={NewGame} />
+                <Route path="/team/:id" component={Team} />
+                <Route path="/teams" component={Teams} />
+                <Route path="/players" component={Players} />
+                <Route path="/game/:id" component={Game} />
+                <Route path="/games" component={Games} />
 			</Switch>
 		)
 	} 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import { makeStyles, useTheme } from '@material-ui/styles';
@@ -8,6 +8,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Divider from '@material-ui/core/Divider';
 import { Link } from 'react-router-dom';
+import { Icon } from '@material-ui/core';
+import logo from '../../assets/logo.png';
 
 const useStyles = makeStyles(theme => ({
 	drawer: {
@@ -20,6 +22,16 @@ const useStyles = makeStyles(theme => ({
     drawerPaper: {
         ...theme.typography.drawer
     },
+    drawerItem: {
+        display: 'flex',
+        alignItems: 'center'
+    },
+    mobileMenuHeader: {
+        background: theme.palette.common.brown
+    },
+    logo: {
+        width: '17rem'
+    }
 }))
 
 const Sidebar = (props) => {
@@ -31,9 +43,37 @@ const Sidebar = (props) => {
     const { window } = props;
     const container = window !== undefined ? () => window().document.body : undefined;
 
+    const wrapperRef = React.useRef(null);
+
+    // below is the same as componentDidMount and componentDidUnmount
+    React.useEffect(() => {
+        document.addEventListener("click", handleClickOutside, false);
+        return () => {
+            document.removeEventListener("click", handleClickOutside, false);
+        };
+    }, [props.openDrawer]);
+
+    const handleClickOutside = event => {
+        if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+            if (props.openDrawer) {
+                props.setOpenDrawer(false);
+            }
+        }
+    };
+
     const drawer = (
-        <div>
-          <div className={classes.toolbar} />
+        <div ref={wrapperRef}>
+            {!matches ? <div className={classes.toolbar} /> : 
+            <div className={classes.mobileMenuHeader}>
+                <Link 
+                    to="/" 
+                    onClick={() => { 
+                        props.setOpenDrawer(false); 
+                        props.setValue(0);
+                    }}>
+                        <img alt="company logo" className={classes.logo} src={logo} />
+                </Link>
+            </div>}
             <Divider />
             <List disablePadding>
                 {props.routes.map((route, index) => (
@@ -52,11 +92,12 @@ const Sidebar = (props) => {
                         <ListItemText 
                             className={classes.drawerItem} 
                             disableTypography>
-                                {route.name}
+                                <Icon style={{ marginLeft: matches ? '0rem' : '3rem' }}>{route.icon}</Icon>
+                                <span style={{ marginLeft: '15px' }}>{route.name}</span>
                             </ListItemText>
                     </ListItem>
                 ))}
-			</List>
+            </List>
         </div>
       );
     

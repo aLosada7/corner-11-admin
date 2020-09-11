@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../../shared/utility';
 
 const initialState = {
-    token: null,
+    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkN2E1MTRiNWQyYzEyYzc0NDliZTA0MiIsImlhdCI6MTU5OTgzNDM0MCwiZXhwIjoxNjAyNDI2MzQwfQ.D7k6i9fsLqOjuk4WHkLye5H8KsNlHNKIJQ67_Fp5o3I",
     error: null,
     loading: false
 }

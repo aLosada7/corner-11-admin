@@ -62,7 +62,7 @@ const Toolbar = (props) =>  {
                     <MenuIcon />
                   </IconButton> : null}
                     <Typography variant="h6" className={classes.title}>
-                      <Link to="/dashboard" ><img alt="company logo" className={classes.logo} src={logo} /></Link>
+                      <Link to="/" ><img alt="company logo" className={classes.logo} src={logo} /></Link>
                     </Typography>
                     { matches ? null : <Button color="inherit" onClick={handleLogOut}>Log Out</Button> }
                 </MaterialToolbar>
