@@ -1,7 +1,6 @@
 import * as actionTypes from './actionTypes';
 
 export const initGeneratedPlayers = (token) => {
-    console.log(token)
     return {
         type: actionTypes.GET_GENERATED_PLAYERS,
         token
@@ -36,7 +35,6 @@ export const removePlayerToNewTeam = (playerId) => {
  * @param {*} selectedPlayers 
  */
 export const createNewTeam = ( token, teamData, selectedPlayers ) => {
-    console.log(selectedPlayers)
     return {
         type: actionTypes.CREATE_TEAM,
         token,

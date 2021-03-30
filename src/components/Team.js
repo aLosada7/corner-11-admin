@@ -103,7 +103,7 @@ const Team = (props) => {
                         <Typography variant="subtitle2">{props.teamInfo._id}</Typography>
                     </Grid>
             </Grid>
-            <Grid item container spacing={3}>
+            <Grid item container spacing={1} style={{justifyContent: 'center'}}>
                 <Grid item container direction="column" xs={12} sm={9} spacing={3}>
                     <Grid item container>
                         <Card style={{ width: '100%' }}>

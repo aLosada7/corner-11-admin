@@ -19,10 +19,7 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
     },
     appBar: {
-      zIndex: '1400',
-      [theme.breakpoints.down("md")]: {
-        zIndex: '0',
-      },
+      zIndex: '10'
     },
     logo: {
       height: '3.5em',
@@ -51,7 +48,7 @@ const Toolbar = (props) =>  {
         <div className={classes.root}>
             <CssBaseline />
             <AppBar role="toolbar" position="fixed" color="primary" className={classes.appBar}>
-                <MaterialToolbar>
+                <MaterialToolbar className={classes.toolbar}>
                   { matches ? <IconButton
                       color="inherit"
                       aria-label="open drawer"

@@ -11,7 +11,7 @@ export function* getGames(action) {
         const upcomingGames = fetchedGames.filter(game => game.homePoints === 0);
         yield put(actions.fetchGamesSuccess(previousGames, upcomingGames));
     } catch (error) {
-        console.log(error)
+        // TODO launch error action
     }
 }
 
@@ -27,7 +27,7 @@ export function* getGame(action) {
         }
         yield put(actions.fetchGameSuccess(game));
     } catch (error) {
-        console.log(error)
+        // TODO launch error action
     }
 }
 
@@ -38,7 +38,7 @@ export function* createGame(action) {
         const response = yield axios.post('/api/v1/games', { home: action.local, visitor: action.visitor });
         yield put(actions.createGameSuccess());
     } catch (error) {
-        console.log(error)
+        // TODO launch error action
     }
 }
 
@@ -56,6 +56,6 @@ export function* simulateGame(action) {
         }
         yield put(actions.simulateGameSuccess(game));
     } catch (error) {
-        console.log(error)
+        // TODO launch error action
     }
 }

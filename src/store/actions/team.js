@@ -79,11 +79,7 @@ export const fetchTeams = () => {
         axios.get('/api/v1/teams')
             .then(response => {
                 const fetchedTeams = response.data.data;
-                console.log(fetchedTeams);
                 dispatch(setAllTeams(fetchedTeams));
-            })
-            .catch(err => {
-                console.log(err)
             });
     }
 }

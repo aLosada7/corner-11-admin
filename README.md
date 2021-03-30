@@ -4,7 +4,9 @@ This application offers the best experience for the administrators of the basket
 
 This includes teams, players or competitions management, with special standings and information to know what's happening at all times.
 
-This application is not yet finish, but already offers a good experience for the user, which can use it in different devices (responsive)
+This application is not yet finish, but already offers a good experience for the user, which can use it in different devices (responsive). 
+
+This application is also uploaded to Heroku, where a live demo is available.
 
 ## Run the application
 
