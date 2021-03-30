@@ -19,4 +19,4 @@ npm start
 
 ## About this application
 
-I used React library with modules as Redux with thunks and sagas, react-router-dom and other packages. It is also connected with a back-end made with NodeJS and Express
+I used React library with modules as Redux with thunks and sagas, react-router-dom and other packages as React Material UI. It is also connected with a back-end made with NodeJS and Express
