@@ -50,7 +50,7 @@ const Toolbar = (props) =>  {
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar position="fixed" color="primary" className={classes.appBar}>
+            <AppBar role="toolbar" position="fixed" color="primary" className={classes.appBar}>
                 <MaterialToolbar>
                   { matches ? <IconButton
                       color="inherit"

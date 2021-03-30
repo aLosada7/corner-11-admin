@@ -102,7 +102,7 @@ const Sidebar = (props) => {
       );
     
     return (
-        <nav className={classes.drawer} aria-label="menu items">
+        <nav role="sidebar" className={classes.drawer} aria-label="menu items">
             { matches ? <Hidden smUp implementation="css">
                 <Drawer
                     variant="temporary"

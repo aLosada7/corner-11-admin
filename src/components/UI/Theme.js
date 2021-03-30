@@ -29,7 +29,7 @@ const theme = createMuiTheme({
     },
     h2: {
       fontFamily: 'Raleway',
-      fontWeight: 700,
+      fontWeight: '700',
       fontSize: '2.5rem',
       color: `${arcPrimary}`,
       lineHeight: '1.5'
